@@ -12,7 +12,8 @@
                 {
                     name: 'home',
                     files: [
-                        'app/components/home/home.component.js'
+                        'app/components/home/home.component.js',
+                        'app/components/home/home.css'
                     ]
                 },
                 {
