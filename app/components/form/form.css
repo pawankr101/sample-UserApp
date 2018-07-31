@@ -1,0 +1,19 @@
+.form {
+    margin-top: 25px;
+}
+.user-form {
+    width: 60%;
+    margin: 15px auto;
+}
+.form-element {
+    margin-bottom: 1rem;
+}
+.form-input-box {
+    margin-bottom: 0;
+}
+.form-radio-element {
+    display: inline-block;
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-right: 12px;
+}
