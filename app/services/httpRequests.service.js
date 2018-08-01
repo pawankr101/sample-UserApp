@@ -1,21 +1,21 @@
 (() => {
     'use strict';
 
-    angular.module('app').factory('httpMyJsonService', httpMyJsonService);
+    angular.module('app').factory('httpRequestsService', httpRequestsService);
 
-    httpMyJsonService.$inject = ['$http'];
-    function httpMyJsonService($http) {
+    httpRequestsService.$inject = ['$http'];
+    function httpRequestsService($http) {
         var userArrayUrl = 'https://api.myjson.com/bins/yatq8';
         var serviceObj = {};
 
-        serviceObj.getUsers = function() {
+        serviceObj.getUsers = () => {
             return $http({
                 method: 'GET',
                 url: userArrayUrl
             });
         };
 
-        serviceObj.putUsers = function(users) {
+        serviceObj.putUsers = (users) => {
             return $http({
                 method: 'PUT',
                 url: userArrayUrl,
