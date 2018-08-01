@@ -8,11 +8,17 @@
         <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/lib/fontawesome/css/svg-with-js.min.css">
         <link rel="stylesheet" href="assets/lib/fontawesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="assets/lib/ng-toaster/css/toaster.min.css">
 
         <link rel="stylesheet" href="assets/css/main-style.css">
     </head>
     <body>
         <main ui-view></main>
+
+        <div ng-controller="apptoaster">
+            <toaster-container toaster-options="{'close-button': true, 'time-out': 5000,'position-class': 'toast-top-right'}">
+            </toaster-container>
+        </div>
 
         <script src="assets/lib/jQuery/jquery-3.3.1.min.js"></script>
         <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -20,7 +26,9 @@
         <script src="assets/lib/angular/angular.min.js"></script>
         <script src="assets/lib/angular/angular-ui-router.min.js"></script>
         <script src="assets/lib/ocLazyLoad/ocLazyLoad.min.js"></script>
+        <script src="assets/lib/angular/angular-animate.min.js"></script>
         <script src="assets/lib/fontawesome/js/all.min.js"></script>
+        <script src="assets/lib/ng-toaster/js/toaster.min.js"></script>
 
         <script src="app/app.js"></script>
 

@@ -8,18 +8,18 @@
         var userArrayUrl = 'https://api.myjson.com/bins/yatq8';
         var serviceObj = {};
 
-        serviceObj.getProducts = function() {
+        serviceObj.getUsers = function() {
             return $http({
                 method: 'GET',
                 url: userArrayUrl
             });
         };
 
-        serviceObj.putProducts = function(products) {
+        serviceObj.putUsers = function(users) {
             return $http({
                 method: 'PUT',
                 url: userArrayUrl,
-                data: products
+                data: users
             });
         };
 

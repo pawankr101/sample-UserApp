@@ -9,7 +9,7 @@
             // console.log('constructor');
         }
 
-        function formController($scope, $element, $attrs){
+        function formController($scope, $element, $attrs, $state, toaster){
             $scope.form = 'FORM';
             $scope.cities = ['delhi', 'mumbai', 'pune', 'noida', 'gurgaon'];
             $scope.user = {
@@ -67,7 +67,7 @@
                     error = true;
                   }
                 });
-                return error
+                return error;
             }
 
             $scope.validateField = (field) => {
@@ -81,10 +81,19 @@
             $scope.submit = () => {
                 let error = hasAnyError()
                 if(error) {
-                    console.log('found Error');
+                    toaster.pop({
+                        type: 'error',
+                        title: 'Found Error in Form',
+                        showCloseButton: true,
+                    });
                     $scope.show = false;
                     return error;
                 }
+                toaster.pop({
+                    type: 'success',
+                    title: 'Successfully Submited',
+                    showCloseButton: true,
+                });
                 $scope.show = true;
             };
         }
@@ -108,7 +117,7 @@
             },
             controller: formController,
             controllerAs: 'form'
-        }
+        };
     }
 
 })(window.angular);
