@@ -1,0 +1,25 @@
+.user-list {
+    margin: 10px;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.user-table {
+    margin-top: 15px;
+}
+.user-table-rows {
+    cursor: default;
+}
+.user-table-header-rows>span {
+    cursor: pointer;
+}
+.id-row {
+    width: 60px;
+}
+.details {
+    width: 75%;
+    margin: auto;
+}
+.details-content>div>div {
+    margin-top: 15px;
+}

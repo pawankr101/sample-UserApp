@@ -2,15 +2,16 @@
     'use strict';
 
     angular.module ('app').directive ('formComponent', formComponent);
-    formComponent.$inject = [];
+    formComponent.$inject = ['dataHandlerService'];
 
-    function formComponent() {
+    function formComponent(dataHandlerService) {
         function constructor($element, $attrs) {
             // console.log('constructor');
         }
 
-        function formController($scope, $element, $attrs, $state, toaster){
+        function formController($scope, $element, $attrs, $stateParams, $state, toaster){
             $scope.form = 'FORM';
+            $scope.userId = parseInt($stateParams.id);
             $scope.cities = ['delhi', 'mumbai', 'pune', 'noida', 'gurgaon'];
             $scope.user = {
                 name: '',
@@ -31,7 +32,24 @@
                 city: ''
             };
             $scope.emailPattern = /\S+@\S+\.\S+/;
-            $scope.show = false;
+            if($scope.userId !== 0) {
+                getUser($scope.userId);
+            }
+
+            function getUser(id) {
+                dataHandlerService.getUserDetail(id)
+                .then(res => {
+                    if(res.message) {
+                        console.log(res.message);
+                        $state.go('app.home');
+                    } else {
+                        $scope.user = res;
+                        $scope.$applyAsync();
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
 
             function hasError(field) {
                 if ($scope.user[field].length === 0) {
@@ -86,15 +104,35 @@
                         title: 'Found Error in Form',
                         showCloseButton: true,
                     });
-                    $scope.show = false;
                     return error;
                 }
-                toaster.pop({
-                    type: 'success',
-                    title: 'Successfully Submited',
-                    showCloseButton: true,
-                });
-                $scope.show = true;
+                if($scope.userId === 0) {
+                    dataHandlerService.addUser($scope.user)
+                    .then(res => {
+                        // toaster.pop({
+                        //     type: 'success',
+                        //     title: res.message,
+                        //     showCloseButton: true,
+                        // });
+                        console.log(res.message);
+                        $state.go('app.home');
+                    }).catch(err => {
+                        // toaster.pop({
+                        //     type: 'error',
+                        //     body: err.message,
+                        //     showCloseButton: true,
+                        // });
+                        console.log(err);
+                    });
+                } else {
+                    dataHandlerService.updateUser($scope.user)
+                    .then(res => {
+                        console.log(res.message);
+                        $state.go('app.home');
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                }
             };
         }
 

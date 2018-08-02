@@ -36,7 +36,7 @@
         })
         .state('app.form', {
             display_name: 'Components',
-            url: '/form',
+            url: '/form/:id',
             cache: true,
             views: {
                 'pagecontent': {

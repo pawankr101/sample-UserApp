@@ -5,8 +5,9 @@
 
     httpRequestsService.$inject = ['$http'];
     function httpRequestsService($http) {
-        var userArrayUrl = 'https://api.myjson.com/bins/yatq8';
-        var serviceObj = {};
+        // let userArrayUrl = 'https://api.myjson.com/bins/yatq8';
+        let userArrayUrl = 'http://localhost:8000/users';
+        let serviceObj = {};
 
         serviceObj.getUsers = () => {
             return $http({
@@ -15,9 +16,9 @@
             });
         };
 
-        serviceObj.putUsers = (users) => {
+        serviceObj.saveUsers = (users) => {
             return $http({
-                method: 'PUT',
+                method: 'POST',
                 url: userArrayUrl,
                 data: users
             });

@@ -5,7 +5,7 @@
     headerController.$inject = ['$scope'];
 
     function headerController($scope) {
-        $scope.heading = 'USERS';
+        $scope.heading = 'USERS APP';
     }
 
 })(window.angular);
